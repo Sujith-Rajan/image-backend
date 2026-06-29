@@ -9,7 +9,7 @@ async function bootstrap() {
     app.enableCors({
       origin: [
         "http://localhost:3000",
-        "https://image-frontend-ivory.vercel.app/"
+        "https://image-frontend-ivory.vercel.app"
       ],
       credentials: true,
     });
