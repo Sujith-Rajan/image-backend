@@ -8,7 +8,8 @@ async function bootstrap() {
     app.use(cookieParser());
     app.enableCors({
       origin: [
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "https://image-frontend-ivory.vercel.app/"
       ],
       credentials: true,
     });
