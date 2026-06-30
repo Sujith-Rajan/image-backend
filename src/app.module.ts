@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { CategoriesModule } from './categories/categories.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthModule } from './auth/auth.module';
+import { AttendanceModule } from './attendance/attendance.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -18,6 +19,7 @@ import { ConfigModule } from '@nestjs/config';
     UsersModule,
     CategoriesModule,
     DashboardModule,
+    AttendanceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
