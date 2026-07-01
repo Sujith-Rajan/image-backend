@@ -4,8 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TodosModule } from './todos/todos.module';
 import { UsersModule } from './users/users.module';
-import { CategoriesModule } from './categories/categories.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthModule } from './auth/auth.module';
 import { AttendanceModule } from './attendance/attendance.module';
 import { ConfigModule } from '@nestjs/config';
@@ -17,8 +15,6 @@ import { ConfigModule } from '@nestjs/config';
     AuthModule,
     TodosModule,
     UsersModule,
-    CategoriesModule,
-    DashboardModule,
     AttendanceModule,
   ],
   controllers: [AppController],
