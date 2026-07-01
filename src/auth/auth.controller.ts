@@ -48,10 +48,12 @@ export class AuthController {
     @Post('logout')
     @HttpCode(HttpStatus.OK)
     async logout(@Res({ passthrough: true }) res: Response) {
+        const isSecureCookie = process.env.COOKIE_SECURE === 'true';
+
         res.clearCookie('refreshToken', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            secure: isSecureCookie,
+            sameSite: isSecureCookie ? 'none' : 'lax',
         });
         return {
             success: true,

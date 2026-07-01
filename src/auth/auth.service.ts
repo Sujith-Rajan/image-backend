@@ -84,10 +84,12 @@ export class AuthService {
     const refreshToken = this.jwtService.sign(payload, { expiresIn: '30d' });
 
     // store refresh token in cookie
+    const isSecureCookie = process.env.COOKIE_SECURE === 'true';
+
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      secure: isSecureCookie,
+      sameSite: isSecureCookie ? 'none' : 'lax',
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
 
