@@ -45,6 +45,23 @@ export class Todo {
   })
   progress: number;
 
+  @Prop({
+    type: [
+      {
+        title: String,
+        isCompleted: {
+          type: Boolean,
+          default: false,
+        },
+      },
+    ],
+    default: [],
+  })
+  subTasks: {
+    title: string;
+    isCompleted: boolean;
+  }[];
+
   @Prop()
   dueDate?: Date;
 

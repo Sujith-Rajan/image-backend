@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put, UseGuards, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put, UseGuards, HttpCode, HttpStatus, Query } from '@nestjs/common';
 import { TodosService } from './todos.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
@@ -28,12 +28,20 @@ export class TodosController {
   @Get('recent')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get recent todos' })
-  async getRecentTodos(@GetUser() user: any) {
-    const todos = await this.todosService.findRecent(user);
+  async getRecentTodos(
+    @GetUser() user: any,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string
+  ) {
+    const pageNum = page ? parseInt(page, 10) : 1;
+    const limitNum = limit ? parseInt(limit, 10) : 10;
+    const result = await this.todosService.findRecent(user, pageNum, limitNum);
     return {
       success: true,
       message: 'Recent todos retrieved successfully',
-      todos,
+      todos: result.todos,
+      total: result.total,
+      hasMore: result.hasMore,
     };
   }
 

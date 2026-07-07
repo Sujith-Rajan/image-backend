@@ -36,4 +36,10 @@ export class CreateTodoDto {
   @IsString()
   @IsOptional()
   assignedTo?: string;
+
+  @IsOptional()
+  subTasks?: {
+    title: string;
+    isCompleted: boolean;
+  }[];
 }

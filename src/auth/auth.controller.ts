@@ -55,6 +55,7 @@ export class AuthController {
             secure: isSecureCookie,
             sameSite: isSecureCookie ? 'none' : 'lax',
         });
+        
         return {
             success: true,
             message: 'Logged out successfully',
